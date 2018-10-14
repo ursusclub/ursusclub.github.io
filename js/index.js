@@ -1,5 +1,5 @@
 var days, hours, minutes, seconds; // variables for time units
-var countdown = document.getElementById("tiles"); // get tag element
+var countdown = document.getElementById("timer"); // get tag element
 var current_time = new Date();
 var ursus_time = new Date();
 
@@ -7,11 +7,16 @@ function setTitle(s){
   document.getElementById("title").innerHTML = s;
 }
 
+function setColour(s){
+  document.getElementById("timer").style.color=s;
+  
+}
 function getUrsusTime(){
   current_time = new Date();
   ursus_time = new Date();
 
-  setTitle("Ursus begins in");
+  //setTitle("The club starts in");
+  setColour("#eee");
   if (current_time.getUTCHours() < 20){
     ursus_time.setUTCHours(20,0,0,0);
   } else if ( current_time.getUTCHours() > 21){
@@ -19,7 +24,8 @@ function getUrsusTime(){
     ursus_time.setUTCDate(ursus_time.getUTCDate()+1);
   } else {
     ursus_time.setUTCHours(22,0,0,0);
-    setTitle("Ursus ends in");
+    setColour("red");
+    //setTitle("The club ends in");
   }
 }
 
@@ -52,3 +58,4 @@ function getCountdown(){
 function pad(n) {
 	return (n < 10 ? '0' : '') + n;
 }
+
